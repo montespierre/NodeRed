@@ -1,0 +1,72 @@
+[
+    {
+        "id": "a4393245683c12bd",
+        "type": "ui_form",
+        "z": "8d6b12beee1c9aa3",
+        "name": "Prod",
+        "label": "Prod",
+        "group": "255ef046c5bf3abb",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "nameProd",
+                "value": "nProd",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "nProd": ""
+        },
+        "payload": "",
+        "submit": "enviar",
+        "cancel": "cancelar",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "736c982b0439cb83"
+            ]
+        ]
+    },
+    {
+        "id": "736c982b0439cb83",
+        "type": "ui_text",
+        "z": "8d6b12beee1c9aa3",
+        "group": "255ef046c5bf3abb",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 350,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "255ef046c5bf3abb",
+        "type": "ui_group",
+        "name": "Opcion5",
+        "tab": "70df625f18569beb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "70df625f18569beb",
+        "type": "ui_tab",
+        "name": "Device4",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

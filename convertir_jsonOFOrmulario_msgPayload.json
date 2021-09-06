@@ -1,0 +1,152 @@
+[
+    {
+        "id": "cf8653656f32c2be",
+        "type": "ui_form",
+        "z": "8d6b12beee1c9aa3",
+        "name": "",
+        "label": "",
+        "group": "b2cf3cba400d27d5",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "prodNumber",
+                "value": "prodN",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "prodN": ""
+        },
+        "payload": "",
+        "submit": "enviar",
+        "cancel": "cancelar",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "x": 1170,
+        "y": 580,
+        "wires": [
+            [
+                "2743c6c5c8d50dcd"
+            ]
+        ]
+    },
+    {
+        "id": "a471848712323d92",
+        "type": "debug",
+        "z": "8d6b12beee1c9aa3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "0d827ec256fc7d2a",
+        "type": "function",
+        "z": "8d6b12beee1c9aa3",
+        "name": "",
+        "func": "p = msg.payload;\nnode.log(typeof p);\nmsg.payload = p.temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 680,
+        "wires": [
+            [
+                "a471848712323d92"
+            ]
+        ]
+    },
+    {
+        "id": "fbfa63fb314ada61",
+        "type": "inject",
+        "z": "8d6b12beee1c9aa3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"topic\":\"test/s1\",\"temp\":55}",
+        "payloadType": "json",
+        "x": 1190,
+        "y": 680,
+        "wires": [
+            [
+                "0d827ec256fc7d2a"
+            ]
+        ]
+    },
+    {
+        "id": "2743c6c5c8d50dcd",
+        "type": "function",
+        "z": "8d6b12beee1c9aa3",
+        "name": "",
+        "func": "p = msg.payload;\nnode.log(typeof p);\nmsg.payload = p.prodN;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1340,
+        "y": 580,
+        "wires": [
+            [
+                "3ec4c311c61d6893"
+            ]
+        ]
+    },
+    {
+        "id": "3ec4c311c61d6893",
+        "type": "debug",
+        "z": "8d6b12beee1c9aa3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b2cf3cba400d27d5",
+        "type": "ui_group",
+        "name": "opcion5_2",
+        "tab": "0bedce0c27afeb9d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "0bedce0c27afeb9d",
+        "type": "ui_tab",
+        "name": "Device5",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

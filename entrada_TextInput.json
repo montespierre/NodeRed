@@ -1,0 +1,133 @@
+[
+    {
+        "id": "9289fa69b9c49459",
+        "type": "ui_text_input",
+        "z": "e62fb5a1b563f3fc",
+        "name": "password input",
+        "label": "Producto",
+        "tooltip": "Ingrese el numero de producto",
+        "group": "8c474bc26dfd1a0f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "46888cf20c0a2936"
+            ]
+        ]
+    },
+    {
+        "id": "46888cf20c0a2936",
+        "type": "ui_text",
+        "z": "e62fb5a1b563f3fc",
+        "group": "8c474bc26dfd1a0f",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 570,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e243c89ac02db6f8",
+        "type": "inject",
+        "z": "e62fb5a1b563f3fc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "9289fa69b9c49459"
+            ]
+        ]
+    },
+    {
+        "id": "992a819a229027c6",
+        "type": "ui_button",
+        "z": "e62fb5a1b563f3fc",
+        "name": "",
+        "group": "8c474bc26dfd1a0f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "24",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "16c8dd1af988882e"
+            ]
+        ]
+    },
+    {
+        "id": "16c8dd1af988882e",
+        "type": "debug",
+        "z": "e62fb5a1b563f3fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "8c474bc26dfd1a0f",
+        "type": "ui_group",
+        "name": "Despacho",
+        "tab": "3ad2dfafb2bc9db4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "3ad2dfafb2bc9db4",
+        "type": "ui_tab",
+        "name": "Device3",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

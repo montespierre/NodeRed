@@ -1,0 +1,190 @@
+[
+    {
+        "id": "ed507ef61a4ec208",
+        "type": "influxdb in",
+        "z": "f6f2187d.f17ca8",
+        "influxdb": "e8c39a8d1f20c345",
+        "name": "",
+        "query": "SHOW SERIES",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "organisation",
+        "x": 350,
+        "y": 720,
+        "wires": [
+            [
+                "337857fa72df2ecc"
+            ]
+        ]
+    },
+    {
+        "id": "337857fa72df2ecc",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "11c98619a5759b48",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 680,
+        "wires": [
+            [
+                "ed507ef61a4ec208"
+            ]
+        ]
+    },
+    {
+        "id": "214566d0bfe8e03a",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 840,
+        "wires": [
+            [
+                "936d0363b6134d1b"
+            ]
+        ]
+    },
+    {
+        "id": "c5eb6bc1f72e946b",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "79ce947e6e210b17",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "test",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "57180ba4093cb330",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 640,
+        "y": 920,
+        "wires": [
+            [
+                "c5eb6bc1f72e946b"
+            ]
+        ]
+    },
+    {
+        "id": "936d0363b6134d1b",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "test",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "57180ba4093cb330",
+        "x": 360,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "e8c39a8d1f20c345",
+        "type": "influxdb",
+        "hostname": "influxdb",
+        "port": "8086",
+        "protocol": "http",
+        "database": "DBONE",
+        "name": "test",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "57180ba4093cb330",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

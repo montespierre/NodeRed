@@ -1,0 +1,97 @@
+[
+    {
+        "id": "a6697d52fcda6803",
+        "type": "inject",
+        "z": "4e3a944d282cbcbe",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 300,
+        "y": 140,
+        "wires": [
+            [
+                "1053d87fe6146057"
+            ]
+        ]
+    },
+    {
+        "id": "3854754cc56f7035",
+        "type": "debug",
+        "z": "4e3a944d282cbcbe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1053d87fe6146057",
+        "type": "function",
+        "z": "4e3a944d282cbcbe",
+        "name": "CONDICIONAL",
+        "func": "if(msg.payload == \"4\"){\n    msg.payload = \"then function is correct\";\n}else{\n    msg.payload = \"try again\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 140,
+        "wires": [
+            [
+                "3854754cc56f7035",
+                "68f53db9a81577a3"
+            ]
+        ]
+    },
+    {
+        "id": "68f53db9a81577a3",
+        "type": "ui_audio",
+        "z": "4e3a944d282cbcbe",
+        "name": "",
+        "group": "8c474bc26dfd1a0f",
+        "voice": "",
+        "always": true,
+        "x": 710,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8c474bc26dfd1a0f",
+        "type": "ui_group",
+        "name": "Despacho",
+        "tab": "3ad2dfafb2bc9db4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "3ad2dfafb2bc9db4",
+        "type": "ui_tab",
+        "name": "Device3",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
