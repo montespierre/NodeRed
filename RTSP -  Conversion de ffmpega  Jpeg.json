@@ -1,0 +1,291 @@
+[
+    {
+        "id": "41a577c9.ee6c5",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "87089176.96e53",
+        "type": "inject",
+        "z": "41a577c9.ee6c5",
+        "name": "Start stream",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 240,
+        "wires": [
+            [
+                "ae984d37a9bddbc5"
+            ]
+        ]
+    },
+    {
+        "id": "a8a37b87.1047c8",
+        "type": "inject",
+        "z": "41a577c9.ee6c5",
+        "name": "Pause all streams",
+        "props": [
+            {
+                "p": "payload",
+                "v": "SIGSTOP",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "SIGSTOP",
+        "payloadType": "str",
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "b72b3fe3.c933c8"
+            ]
+        ]
+    },
+    {
+        "id": "a29eac62.280ae8",
+        "type": "inject",
+        "z": "41a577c9.ee6c5",
+        "name": "Resume all streams",
+        "props": [
+            {
+                "p": "payload",
+                "v": "SIGCONT",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "SIGCONT",
+        "payloadType": "str",
+        "x": 160,
+        "y": 460,
+        "wires": [
+            [
+                "b72b3fe3.c933c8"
+            ]
+        ]
+    },
+    {
+        "id": "b72b3fe3.c933c8",
+        "type": "change",
+        "z": "41a577c9.ee6c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "kill",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 460,
+        "wires": [
+            [
+                "0748e1ea8dfbf5e0"
+            ]
+        ]
+    },
+    {
+        "id": "febfdc6f.9c1e98",
+        "type": "inject",
+        "z": "41a577c9.ee6c5",
+        "name": "Stop all streams",
+        "props": [
+            {
+                "p": "payload",
+                "v": "SIGTERM",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "SIGTERM",
+        "payloadType": "str",
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "b72b3fe3.c933c8"
+            ]
+        ]
+    },
+    {
+        "id": "0748e1ea8dfbf5e0",
+        "type": "exec",
+        "z": "41a577c9.ee6c5",
+        "command": "ffmpeg -y -i \"rtsp://rtsp:3LSbrUvJ@192.168.3.101:554/av_stream/ch0\" -vframes 1 -f image2pipe -vcodec png -",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Decodificar",
+        "x": 630,
+        "y": 560,
+        "wires": [
+            [
+                "51bc645840cf0bce"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ae984d37a9bddbc5",
+        "type": "change",
+        "z": "41a577c9.ee6c5",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "/home/boby/node-red-static/grab2.jpg",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "0748e1ea8dfbf5e0"
+            ]
+        ]
+    },
+    {
+        "id": "51bc645840cf0bce",
+        "type": "base64",
+        "z": "41a577c9.ee6c5",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 820,
+        "y": 560,
+        "wires": [
+            [
+                "fddaf7f7350ad32e"
+            ]
+        ]
+    },
+    {
+        "id": "fddaf7f7350ad32e",
+        "type": "jimp-image",
+        "z": "41a577c9.ee6c5",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "ret": "img",
+        "parameter1": "",
+        "parameter1Type": "msg",
+        "parameter2": "",
+        "parameter2Type": "msg",
+        "parameter3": "",
+        "parameter3Type": "msg",
+        "parameter4": "",
+        "parameter4Type": "msg",
+        "parameter5": "",
+        "parameter5Type": "msg",
+        "parameter6": "",
+        "parameter6Type": "msg",
+        "parameter7": "",
+        "parameter7Type": "msg",
+        "parameter8": "",
+        "parameter8Type": "msg",
+        "sendProperty": "payload",
+        "sendPropertyType": "msg",
+        "parameterCount": 0,
+        "jimpFunction": "none",
+        "selectedJimpFunction": {},
+        "x": 970,
+        "y": 560,
+        "wires": [
+            [
+                "a991cab937c719a6"
+            ]
+        ]
+    },
+    {
+        "id": "a991cab937c719a6",
+        "type": "image",
+        "z": "41a577c9.ee6c5",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 1120,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "19aeb3e90dee33a3",
+        "type": "comment",
+        "z": "41a577c9.ee6c5",
+        "name": "Conversion de ffmpega  Jpeg",
+        "info": "Convertir en node red camara RTSP a imagen\nhttps://www.youtube.com/watch?v=nYN53LiqVQk",
+        "x": 140,
+        "y": 40,
+        "wires": []
+    }
+]
